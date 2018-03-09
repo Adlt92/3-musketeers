@@ -1,4 +1,5 @@
 /*eslint-disable no-process-exit*/
+/**Import laibrairies */
 const chalk = require('chalk');
 const updateNotifier = require('update-notifier');
 const Conf = require('conf');
@@ -19,12 +20,13 @@ const saveCurrencies = argv => {
   console.log(chalk.green('Saved default currencies to ' + config.path));
   process.exit(1);
 };
-
+/**Search the version of the program */
 const version = () => {
   console.log(pkg.version);
   process.exit(1);
 };
 
+/**Show for the help the different commands */
 const help = () => {
   console.log(`
 Usage:
@@ -57,13 +59,14 @@ Examples:
   process.exit(1);
 };
 
+/**Select the good command */
 const helpers = argv => {
-  // Version
+  /** Version */
   if (argv.indexOf('--version') !== - 1 || argv.indexOf('-v') !== - 1) {
     version();
   }
 
-  // Help
+  /** Help */
   if (
     argv.indexOf('--help') !== - 1
     || argv.indexOf('-h') !== - 1
@@ -71,7 +74,7 @@ const helpers = argv => {
   ) {
     help();
   }
-
+  /** Save */
   if (
     argv.indexOf('--save') !== - 1
     || argv.indexOf('-s') !== - 1
