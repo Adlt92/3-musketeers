@@ -5,7 +5,7 @@ const helpers = require('./helpers.js');
 const cash = require('./cash.js');
 
 const config = new Conf();
-
+/**keep the command line and select the second part with the arguments*/
 const argv = process.argv.slice(2);
 
 /**
@@ -13,8 +13,10 @@ const argv = process.argv.slice(2);
  */
 helpers(argv);
 /** divise arguments in a json format
+ * @param {json} command 
  * @param {float} amount is required, it is a  float
- * @param {} from is the origin currencie by default usd 
+ * @param {string} from is the origin currencie by default usd 
+ * @param {string} to it's currencies for the output
  * if thenre is no currencies for the output the default currencies are usd eur gpb
  */
 const command = {
@@ -25,7 +27,8 @@ const command = {
       ? process.argv.slice(4)
       : config.get('defaultTo', ['USD', 'EUR', 'GBP'])
 };
+
 /** We start cash 
- * @param {json} command It's the arguments
+ * @param {json} command It's the arguments of the command line
 */
 cash(command);

@@ -80,6 +80,9 @@ const helpers = argv => {
     || argv.indexOf('-s') !== - 1
     || ! argv.length
   ) {
+    /**Save in a file the currecncies rate's
+     * @param {string} argv it is the command
+     */
     saveCurrencies(argv);
   }
 };
